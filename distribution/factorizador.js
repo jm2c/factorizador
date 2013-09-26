@@ -61,20 +61,14 @@ ARIT.factorizar = function(numero, limite=5){
 						||----w |
 						||     ||
 			 */
-			if(numero != 1){
-				while(numero != 1){
-					while(numero % primo == 0){
-						factores.push(primo);
-						subcompuestos.push(numero);
-						numero /= primo;
-					}
-					primo = siguientePrimo(primo);
+			while(numero != 1){
+				while(numero % primo == 0){
+					factores.push(primo);
+					subcompuestos.push(numero);
+					numero /= primo;
 				}
-			}else{
-				//indicar que el uno no se puede factorizar
-				return 1;
+				primo = siguientePrimo(primo);
 			}
-			
 			
 			//Regresa un objeto con los datos de la factorización ya realizada
 			return {
@@ -86,7 +80,7 @@ ARIT.factorizar = function(numero, limite=5){
 		}else{
 			return {
 				'factores' : '',
-				'factorizacion' : 'El número "uno" por definición no se considera primo ni compuesto',
+				'factorizacion' : '<span class="fact-resultado">El número "uno" por definición no se considera primo ni compuesto</span>',
 				'subcompuestos' : '',
 				'tabla' : ''
 			};
@@ -94,7 +88,7 @@ ARIT.factorizar = function(numero, limite=5){
 	}else{
 		return {
 			'factores' : '',
-			'factorizacion' : 'El número parece ser muy grande como para intentarlo',
+			'factorizacion' : '<span class="fact-resultado">El número es muy grande e intentarlo podría trabar tu equipo.</span>',
 			'subcompuestos' : '',
 			'tabla' : ''
 		};
@@ -146,7 +140,7 @@ ARIT.factorizar = function(numero, limite=5){
 			}
 			
 			//Finalmente hace un string HTML que es el que la función regresa
-			var html = '<span class="fact-result">';
+			var html = '<span class="fact-resultado">';
 			for(i = 0; i < potencias.length; i++){
 				html += factoresUnicos[i];
 				html += potencias[i] == 1 ? '' : '<sup>'+potencias[i]+'</sup>';
@@ -156,13 +150,13 @@ ARIT.factorizar = function(numero, limite=5){
 		
 			return html;
 		}else{
-			return 'El número '+factores[0]+' es primo';
+			return '<span class="fact-resultado">El número '+factores[0]+' es primo</span>';
 		}
 	}
 	
 	//Crea una Tabla en HTML para mostrar un resultado más bonito
 	function tablaHtml(factores, subcompuestos){
-		var tabla = '<table class="fact-table" style="border-collapse:collapse;border-spacing:0px">';
+		var tabla = '<table class="fact-tabla" style="border-collapse:collapse;border-spacing:0px">';
 		for(i = 0; i < factores.length;i++){
 			tabla += '<tr><td style="text-align:right;border-right:solid 0.1em black;padding-right:0.25em;">'+subcompuestos[i]+'</td><td style="padding-left:0.25em;">'+factores[i]+'</td></tr>';
 		}
