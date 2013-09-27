@@ -1,6 +1,6 @@
 /***************************************************
 ** - factorizador.js                              **
-** - autor: jmcareaga                             **
+** - github: jm2c/factorizador                    **
 ** - librería javaScript que factoriza números    **
 **  compuestos en sus factores primos.            **
 ** - versión: 2.0                                 **
