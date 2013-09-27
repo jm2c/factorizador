@@ -3,8 +3,8 @@
 ** - github: jm2c/factorizador                    **
 ** - librería javaScript que factoriza números    **
 **  compuestos en sus factores primos.            **
-** - versión: 2.0                                 **
-** - fecha de modificación: 24/09/2013            **
+** - versión: 2.1                                 **
+** - fecha de modificación: 26/09/2013            **
 ****************************************************/
 
 /*
@@ -31,21 +31,25 @@ var ARIT = ARIT || {};
                 ||----w |
                 ||     ||
 */
-ARIT.factorizar = function(numero, limite=5){
+ARIT.factorizar = function(numero, limite = 10){
 	if(numero.toString().length <= limite){
 		if(numero != 1){
 			//primer número primo de la lista, los cosecuentes se calcularán con el método "siguientePrimo"
-			var primo = 2;
+			var primo = 2,
+
+			//Con la raíz cuadrada del número se limíta el número de calculos del proceso, con lo cual obtendremos
+			//un mejor rendimiento en los cálculos
+				raizNumero = Math.ceil(Math.sqrt(numero)),
 			
 			//guarda una lista de los números primos que se vayan usando
-			var primosAnteriores = [];
+				primosAnteriores = [],
 			
 			//Crea una lista de los números en los que se va descomponiendo el número, esto es
 			//perte del resultado al generar la tabla
-			var subcompuestos=[]
+				subcompuestos = [],
 			
 			//Crea una lista de los factores del número, este es el resultado que queremos obtener
-			var factores = []
+				factores = [];
 			
 			/* 
 		 __FACTORIZACIÓN_-_PROCESO_PRINCIPAL_____________________________________________
@@ -62,6 +66,9 @@ ARIT.factorizar = function(numero, limite=5){
 						||     ||
 			 */
 			while(numero != 1){
+				if(primo > raizNumero){
+					primo = numero;
+				}
 				while(numero % primo == 0){
 					factores.push(primo);
 					subcompuestos.push(numero);
@@ -72,10 +79,10 @@ ARIT.factorizar = function(numero, limite=5){
 			
 			//Regresa un objeto con los datos de la factorización ya realizada
 			return {
-				'factores':factores,
-				'factorizacion':factoresHtml(factores),
-				'subcompuestos':subcompuestos,
-				'tabla':tablaHtml(factores, subcompuestos)
+				'factores' : factores,
+				'factorizacion' : factoresHtml(factores),
+				'subcompuestos' : subcompuestos,
+				'tabla' : tablaHtml(factores, subcompuestos)
 			};
 		}else{
 			return {
@@ -158,9 +165,9 @@ ARIT.factorizar = function(numero, limite=5){
 	function tablaHtml(factores, subcompuestos){
 		var tabla = '<table class="fact-tabla" style="border-collapse:collapse;border-spacing:0px">';
 		for(i = 0; i < factores.length;i++){
-			tabla += '<tr><td style="text-align:right;border-right:solid 0.1em black;padding-right:0.25em;">'+subcompuestos[i]+'</td><td style="padding-left:0.25em;">'+factores[i]+'</td></tr>';
+			tabla += '<tr><td class="fact-tabla-subcompuesto" style="text-align:right;border-right:solid .1em black;padding-right:.25em;">'+subcompuestos[i]+'</td><td class="fact-tabla-factor" style="padding-left:.25em;">'+factores[i]+'</td></tr>';
 		}
-		tabla += '<tr><td style="text-align:right;border-right:solid 0.1em black;padding-right:0.25em;">1</td><td>&nbsp;</td></tr>';
+		tabla += '<tr><td class="fact-tabla-subcompuesto" style="text-align:right;border-right:solid .1em black;padding-right:.25em;">1</td><td class="fact-tabla-factor">&nbsp;</td></tr>';
 		tabla += '</table>';
 		return tabla;
 	}

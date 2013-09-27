@@ -5,7 +5,7 @@ window.onload = function(){
 	
 	boton.onclick = function(){
 		var numero = input.value;
-		factor = ARIT.factorizar(numero,8);
+		factor = ARIT.factorizar(numero);
 		resultadoLargo = factor.factores.length > 1 ? '<div>Los factores de '+numero+' son: '+factor.factores.join('&times;')+'</div>' : '';
 		resultado.innerHTML = factor.tabla+resultadoLargo+factor.factorizacion;
 	}
