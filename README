@@ -1,18 +1,20 @@
 Factorizador - javaScript
 
 Librería javaScript que factoriza números compuestos en sus factores primos. Toda la aplicación esta dentro de un namespace ARIT (de aritmética) para evitar variables o funciones repetidas.
-Para invocar a la función se hace de la siguiente manera (dentro de javaScript clar está):
+Para invocar a la función se hace de la siguiente manera (dentro de javaScript claro está):
 
-	var miNumero = ARIT.factorizar(algunNumero);
+	var miNumero = ARIT.factorizar(algunNumero, [limite]);
+
+El primer parámetro es el número a factorizar. El segundo parámetro "limite" (opcional) restringe el número de dígitos del número que se va a factorizar, por default 5 (o sea números de hasta cinco cifras).
 
 De esta forma la variable "miNumero" ahora es un objeto que contiene cuatro propiedades:
 
-miNumero.factores = un array con todos los factores o divisores de "algunNumero", es la parte derecha de la tabla.
+  miNumero.factores = un array con todos los factores o divisores de "algunNumero", es la parte derecha de la tabla.
 
-miNumero.factorizacion = un string con etiquetas HTML con la factorización de "algunNumero" formateado como potencias, se ha puesto el resultado dentro de una etiqueta <span> con la clase "fact-resultado" para ser fácilmente manipulable por CSS.
+  miNumero.factorizacion = un string con etiquetas HTML con la factorización de "algunNumero" formateado como potencias, se ha puesto el resultado dentro de una etiqueta <span> con la clase "fact-resultado" para ser fácilmente manipulable por CSS.
 
-miNumero.subcompuestos = un array con los números que van saliendo al realizar la factorización a mano, es la parte izquierda de la tabla.
+  miNumero.subcompuestos = un array con los números que van saliendo al realizar la factorización a mano, es la parte izquierda de la tabla.
 
-miNumero.tabla = un string con etiquetas HTML que es una tabla con el procedimiento de la factorización. A la etiqueta <table> se le ha agregado la clase "fact-tabla" para ser fácilmente manipulable por CSS, además de contar con algunos estilos propios para que esté prácticamente lista para ser mostrada.
+  miNumero.tabla = un string con etiquetas HTML que es una tabla con el procedimiento de la factorización. A la etiqueta <table> se le ha agregado la clase "fact-tabla" para ser fácilmente manipulable por CSS, además de contar con algunos estilos propios para que esté prácticamente lista para ser mostrada.
 
 Para ver como funciona descarga el repositorio, abre el ejemplo "index.html" y revisa su código fuente. La librería la encuantras en la carpet "distribution". Mientras que los archivos del ejemplo, que no son necesarios para que funcione la librería, solo para el ejemplo, están en la carpeta "assets".
