@@ -3,7 +3,7 @@
 ** - github: jm2c/factorizador                    **
 ** - librería javaScript que factoriza números    **
 **  compuestos en sus factores primos.            **
-** - versión: 2.1                                 **
+** - versión: 2.1.1                               **
 ** - fecha de modificación: 26/09/2013            **
 ****************************************************/
 
@@ -31,7 +31,8 @@ var ARIT = ARIT || {};
                 ||----w |
                 ||     ||
 */
-ARIT.factorizar = function(numero, limite = 10){
+ARIT.factorizar = function(numero, limite){
+	limite = limite || 10;
 	if(numero.toString().length <= limite){
 		if(numero != 1){
 			//primer número primo de la lista, los cosecuentes se calcularán con el método "siguientePrimo"
@@ -39,7 +40,7 @@ ARIT.factorizar = function(numero, limite = 10){
 
 			//Con la raíz cuadrada del número se limíta el número de calculos del proceso, con lo cual obtendremos
 			//un mejor rendimiento en los cálculos
-				raizNumero = Math.ceil(Math.sqrt(numero)),
+				raizNumero = raiz(numero),
 			
 			//guarda una lista de los números primos que se vayan usando
 				primosAnteriores = [],
@@ -73,6 +74,7 @@ ARIT.factorizar = function(numero, limite = 10){
 					factores.push(primo);
 					subcompuestos.push(numero);
 					numero /= primo;
+					raizNumero = raiz(numero);
 				}
 				primo = siguientePrimo(primo);
 			}
@@ -126,6 +128,10 @@ ARIT.factorizar = function(numero, limite = 10){
 		}
 		//Si el ciclo fué interrumpido vuelve a hacer la comprobación si no, regresa el primo
 		return cicloInterrumpido ? siguientePrimo(primoActual) : primoActual;
+	}
+	
+	function raiz(numero){
+		return Math.ceil(Math.sqrt(numero));
 	}
 	
 	//Crea la lista de factores en formato HTML para que se vea bonito
