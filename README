@@ -1,4 +1,4 @@
-Factorizador.js v2.1
+Factorizador.js v2.1.1
 
 Librería javaScript que factoriza números compuestos en sus factores primos. Toda la aplicación esta dentro de un namespace ARIT (de aritmética) para evitar variables o funciones repetidas.
 Para invocar a la función se hace de la siguiente manera (dentro de javaScript claro está):
