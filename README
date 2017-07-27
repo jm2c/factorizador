@@ -18,6 +18,7 @@ De esta forma la variable "miNumero" ahora es un objeto que contiene cuatro prop
   miNumero.tabla = un string con etiquetas HTML que es una tabla con el procedimiento de la factorización. A la etiqueta <table> se le ha agregado la clase "fact-tabla" para ser fácilmente manipulable por CSS, además de contar con algunos estilos propios para que esté prácticamente lista para ser mostrada. A las etiquetas <td> de la tabla también se les ha colocado una clase, para la columna de la izquierda cada celda tiene la clase "fact-tabla-subcompuesto" y para la columna de la derecha la clase es "fact-tabla-factor"
 
 Para ver como funciona descarga el repositorio, abre el ejemplo "index.html" y revisa su código fuente. La librería la encuantras en la carpeta "distribution". Mientras que los archivos del ejemplo, que no son necesarios para que funcione la librería, solo para el ejemplo, están en la carpeta "assets".
+Para ver un ejemplo funcional de la librería visita http://cursos-para-educar.me/utilidades/factorizador
 
 Mejoras con respecto a la versión 2.0
 -Se mejoró el rendimiento de los cálculos, con lo que se aumentó el límite por defecto de 5 hasta 10 dígitos, aunque podrías aumentar ese límite sin problemas, solo que te toparas con un número primo de más de diez cifras entonces habría dificultades.
