@@ -1,12 +1,16 @@
-window.onload = function(){
-	var input = document.getElementById('numero');
-	var boton = document.getElementById('btn');
-	var resultado = document.getElementById('resultado');
+const $boton      = document.getElementById('btn');
+const $formulario = document.getElementById('formulario');
+const $input      = document.getElementById('numero');
+const $resultado  = document.getElementById('resultado');
+
 	
-	boton.onclick = function(){
-		var numero = input.value;
-		factor = ARIT.factorizar(numero);
-		resultadoLargo = factor.factores.length > 1 ? '<div>Los factores de '+numero+' son: '+factor.factores.join('&times;')+'</div>' : '';
-		resultado.innerHTML = factor.tabla+resultadoLargo+factor.factorizacion;
-	}
-}
+$formulario.addEventListener('submit', function(evt){
+    evt.preventDefault();
+    const numero = parseInt($input.value);
+    factor = factorizar(numero);
+
+    $resultado.innerHTML = factor.tablaFactores();
+    const $r = document.createElement('p');
+    $r.innerHTML = `${numero} = ${factor.factorizacion()} = ${factor.factorizacionCorta()}`;
+    $resultado.appendChild($r);
+});
