@@ -1,25 +1,28 @@
-Factorizador.js v2.1.1
+Factorizador (javascript) v3.0
 
-Librería javaScript que factoriza números compuestos en sus factores primos. Toda la aplicación esta dentro de un namespace ARIT (de aritmética) para evitar variables o funciones repetidas.
+Librería javaScript que factoriza números compuestos en sus factores primos.
 Para invocar a la función se hace de la siguiente manera (dentro de javaScript claro está):
 
-	var miNumero = ARIT.factorizar(algunNumero, [limite]);
+	var miNumero = factorizar(algunNumero, [limite]);
 
-El primer parámetro es el número a factorizar. El segundo parámetro "limite" (opcional) restringe el número de dígitos del número que se va a factorizar, por default 10 (o sea números de hasta diez cifras).
+El primer parámetro es el número a factorizar. El segundo parámetro "limite" (opcional) restringe el número de dígitos del número que se va a factorizar, por omisión 12 (o sea números de hasta doce cifras).
 
-De esta forma la variable "miNumero" ahora es un objeto que contiene cuatro propiedades:
+De esta forma el objeto "miNumero" ahora es un objeto que contiene tres propiedades:
 
-  miNumero.factores = un array con todos los factores o divisores de "algunNumero", es la parte derecha de la tabla.
+  miNumero.numero = El número con el que se creó el objeto, o sea, el número a factorizar.
 
-  miNumero.factorizacion = un string con etiquetas HTML con la factorización de "algunNumero" formateado como potencias, se ha puesto el resultado dentro de una etiqueta <span> con la clase "fact-resultado" para ser fácilmente manipulable por CSS.
+  miNumero.factores = Un arreglo con los factores primos del número a factorizar.
 
-  miNumero.subcompuestos = un array con los números que van saliendo al dividir el número entre los números primos encontrados, es la parte izquierda de la tabla.
+  miNumero.subcompuestos = Un arreglo con los números que van saliendo al dividir el número entre los números primos encontrados, es la parte izquierda de la tabla.
 
-  miNumero.tabla = un string con etiquetas HTML que es una tabla con el procedimiento de la factorización. A la etiqueta <table> se le ha agregado la clase "fact-tabla" para ser fácilmente manipulable por CSS, además de contar con algunos estilos propios para que esté prácticamente lista para ser mostrada. A las etiquetas <td> de la tabla también se les ha colocado una clase, para la columna de la izquierda cada celda tiene la clase "fact-tabla-subcompuesto" y para la columna de la derecha la clase es "fact-tabla-factor"
+Además el objeto "miNumero" tiene tres métodos:
 
-Para ver como funciona descarga el repositorio, abre el ejemplo "index.html" y revisa su código fuente. La librería la encuantras en la carpeta "distribution". Mientras que los archivos del ejemplo, que no son necesarios para que funcione la librería, solo para el ejemplo, están en la carpeta "assets".
+  miNumero.factorizacion() = Regresa una cadena de texto en formato HTML con todos los factores del número.
+
+  miNumero.factorizacionCorta() = Regresa una cadena de texto en formato HTML con los factores distintos del número elevados al correspondiente exponente.
+
+  miNumero.tablaFactores() = Regresa una tabla en HTML con la clase "fact-table" que despliega el procedimiento de factorización del número.
+
+Para ver como funciona descarga el repositorio, abre el ejemplo "index.html" y revisa su código fuente. La librería la encuentras en la carpeta "dist". El código fuente en la carpeta "src". Mientras que los archivos del ejemplo, que no son necesarios para que funcione la librería, solo para el ejemplo, están en la carpeta "assets".
 Para ver un ejemplo funcional de la librería visita http://cursos-para-educar.me/utilidades/factorizador
 
-Mejoras con respecto a la versión 2.0
--Se mejoró el rendimiento de los cálculos, con lo que se aumentó el límite por defecto de 5 hasta 10 dígitos, aunque podrías aumentar ese límite sin problemas, solo que te toparas con un número primo de más de diez cifras entonces habría dificultades.
--Se agregaron más clases a las etiquetas HTML de la tabla para que sean más manipulables.
